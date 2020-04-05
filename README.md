@@ -1,0 +1,1 @@
+## A dynamic implementation of supervised deep learning architecture
