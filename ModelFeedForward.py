@@ -3,7 +3,7 @@ import ActivataionFeedForward as aff
 
 def L_model_FeedForward(X,Parameters,Actionation_Functions):
     """
-    # inputs:
+    # Arguments:
         X is a matrix of (n,m), where m is the number of training samples, 
         whereas n is the number of features
 
