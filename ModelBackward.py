@@ -5,21 +5,25 @@ import ComputeCostFunction as ccf
 def L_model_backward(AL,Y,parameters,forward_caches,activation_functions,cost_func_name):
     """
     # Arguments:
+        AL is the output of network 
+        Y is the actual output 
         Parameters is a dictionary of W[l] , b[l]
-
         forward_caches is a list of (Z, A_prev) corresponding to each layer 
 
         Activation_Functions is np array of shape (1,L), 
         which indicates the activation function for each hidden layer
 
+        cost_func_name is the name of active cost function
+
     Output:
-        A dictionary of dWs and dbs for all layers
+        updated_parameters, which is the new parameters for the next epoch
+        cost, indicades the actual cost of current epoch of network over all training samples
     """
 
     L = activation_functions.shape[1]
     grades = {}
 
-    # calcutlate the derivative of dL over dAL
+    # calcutlate the cost as well as derivative of dL over dAL
     cost, dAL = ccf.compute_cost(Al, Y, cost_func_name)
     dA = dAL
 
@@ -34,7 +38,7 @@ def L_model_backward(AL,Y,parameters,forward_caches,activation_functions,cost_fu
         grades["dW" + str(l)] = dW
         grades["db" + str(l)] = db
 
-    return grades
+    return grades, cost
 
 
 

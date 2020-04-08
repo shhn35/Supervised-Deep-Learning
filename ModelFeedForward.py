@@ -11,6 +11,9 @@ def L_model_FeedForward(X,Parameters,Actionation_Functions):
 
         Activation_Functions is np array of shape (1,L), 
         which indicates the activation function for each hidden layer
+    # Output:
+        1- AL, which is the final output of the network, called y hat
+        2- forward_caches, is a list of (Z, A_prev) for each layer
     """
     L = Actionation_Functions.shape[1]
     
