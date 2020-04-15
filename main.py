@@ -14,9 +14,10 @@ def supervised_DNN():
     cost_func_name,learning_rate,max_epoch,L,layer_units,activation_functions = hpis.hyper_params_init()
 
     # Load the whole data set 
-    X,Y = lds.load_dataset()
+    train_X,train_Y,test_X,test_Y = lds.load_dataset("catvnoncat")
 
-    layer_units = np.insert(layer_units,0,X.shape[0],axis=1) # insert th number of features of X into layer_units
+    # insert the number of features of X into layer_units
+    layer_units = np.insert(layer_units,0,train_X.shape[0],axis=1) 
 
 
     # Initialize network's parameters for all layers
@@ -25,9 +26,9 @@ def supervised_DNN():
     training_cost = np.zeros((1,max_epoch))
     # Start learning process
     for e in range(max_epoch):
-        AL, forward_caches = ff.L_model_FeedForward(X, parameters,activation_functions)
+        AL, forward_caches = ff.L_model_FeedForward(train_X, parameters,activation_functions)
 
-        grades, cost = bp.L_model_backward(AL, Y, parameters, forward_caches, activation_functions, cost_func_name)
+        grades, cost = bp.L_model_backward(AL, train_Y, parameters, forward_caches, activation_functions, cost_func_name)
         training_cost[0,l] = cost
 
         parameters = up.update_params(parameters, grades, learning_rate)

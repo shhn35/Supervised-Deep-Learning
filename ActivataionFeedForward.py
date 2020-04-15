@@ -8,7 +8,7 @@ def activation_forward(A_prev,W,b,activation_function):
     Z = np.dot(W,A_prev) + b
     assert (Z.shape == (W.shape[0], A_prev.shape[1]))
 
-    A = call_function(activation_function)
+    A = call_function(activation_function,Z)
     assert (A.shape == (W.shape[0], A_prev.shape[1]))
 
     forward_cache = (Z, A_prev)

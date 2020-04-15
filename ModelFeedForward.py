@@ -26,7 +26,7 @@ def L_model_FeedForward(X,Parameters,Actionation_Functions):
     for l in range(1,L+1):
         W = Parameters["W" + str(l)]
         b = Parameters["b" + str(l)]
-        activation_func = Actionation_Functions[1,l-1]
+        activation_func = Actionation_Functions[0,l-1]
 
         A,forward_cache = aff.activation_forward(A_prev,W,b,activation_func)
         

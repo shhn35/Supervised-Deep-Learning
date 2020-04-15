@@ -2,10 +2,7 @@ import numpy as np
 
 ### Define activation functions
 def relu(z):
-    if z < 0 :
-        return 0
-    else:
-        return z
+    return np.where(z > 0, z, 0)
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
@@ -14,10 +11,7 @@ def tanh(z):
     return (np.exp(z) - np.exp(-z)) / (np.exp(z) + np.exp(-z))
 
 def leaky_relu(z):
-    if z < 0:
-        return z * 0.01
-    else:        
-        return z
+    return np.where(z > 0, z, 0.01)
 
 ### Define derivatives of above functions
 
