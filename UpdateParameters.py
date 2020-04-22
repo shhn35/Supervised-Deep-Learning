@@ -21,12 +21,18 @@ def update_params(Parameters,grades,learning_rate):
         W = Parameters["W" + str(l)]
         b = Parameters["b" + str(l)]
 
-        dW = grades["W" + str(l)]
-        db = grades["b" + str(l)]
+        dW = grades["dW" + str(l)]
+        db = grades["db" + str(l)]
 
         # updating parameters' value based on their own derivatives
-        Parameters["W" + str(l)] = W - learning_rate * dW
-        Parameters["b" + str(l)] = b - learning_rate * db
+        W = W - learning_rate * dW
+        b = b - learning_rate * db
+
+        W = np.where(W>1 , 1 , W)
+        W = np.where(W<-1 , -1 , W)
+        
+        Parameters["W" + str(l)] = W
+        Parameters["b" + str(l)] = b
 
     return Parameters
         

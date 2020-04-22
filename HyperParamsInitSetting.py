@@ -8,22 +8,22 @@ def hyper_params_init():
         cost_func_1: L(O,Y) = - (Y.log(O) + (1-Y).log(1-O))
     """
 
-    learning_rate = 0.01
+    learning_rate = 0.0075
     """
         Specify the learning rate for learning algorithm between [0 1]
     """
 
-    max_epoch = 10000
+    max_epoch = 3000
     """
         Determine the max of learning iteration over all training samples
     """
 
-    L = 3    
+    L = 4    
     """
         Indicate number of active layers in your DNN
     """
 
-    layer_units = np.array([[10,5,1]])
+    layer_units = np.array([[20, 7, 5, 1]])
     assert(layer_units.shape == (1,L))
     """
         Define the number of active units (neurons) in each layer of DNN
@@ -32,7 +32,7 @@ def hyper_params_init():
         layer_units[0] indicates the number of neurons in the first active layer of DNN
     """
 
-    activation_functions = np.array([["relu","relu","sigmoid"]])
+    activation_functions = np.array([["relu","relu","relu","sigmoid"]])
     assert(activation_functions.shape == (1,L))
     """
         Define the activation function of each layers of DNN

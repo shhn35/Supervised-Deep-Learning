@@ -24,14 +24,14 @@ def L_model_backward(AL,Y,parameters,forward_caches,activation_functions,cost_fu
     grades = {}
 
     # calcutlate the cost as well as derivative of dL over dAL
-    cost, dAL = ccf.compute_cost(Al, Y, cost_func_name)
+    cost, dAL = ccf.compute_cost(AL, Y, cost_func_name)
     dA = dAL
 
     for l in reversed(range(1,L+1)):
         W = parameters["W"+str(l)]
-        current_forward_cache = forward_caches[l-1]
+        current_forward_cache = forward_caches[l-1]  # (Z,A_Prev) in each layer
 
-        dW, db, dA_prev = ab.activation_backward(W,dA,current_forward_cache,activation_functions[1,l-1])
+        dW, db, dA_prev = ab.activation_backward(W,dA,current_forward_cache,activation_functions[0,l-1])
 
         dA = dA_prev
 

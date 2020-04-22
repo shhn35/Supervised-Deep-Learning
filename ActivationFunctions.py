@@ -2,7 +2,10 @@ import numpy as np
 
 ### Define activation functions
 def relu(z):
-    return np.where(z > 0, z, 0)
+    A = np.maximum(0,z)
+    assert(A.shape == z.shape)
+    
+    return A
 
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))

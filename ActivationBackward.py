@@ -15,6 +15,10 @@ def activation_backward(W,dA,forward_cache,activation_func_name):
 
     dA_prev = np.dot(W.T,dZ)
 
+    # dW = 1./m * np.dot(dZ,A_prev.T)
+    # db = 1./m * np.sum(dZ, axis = 1, keepdims = True)
+    # dA_prev = np.dot(W.T,dZ)
+
     return dW, db, dA_prev
 
 
